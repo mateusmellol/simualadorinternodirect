@@ -1,0 +1,23 @@
+{
+  "name": "simulador-direct",
+  "version": "1.0.0",
+  "description": "Simulador de Consórcio Directcon",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild js/bootstrap.tsx --bundle --outfile=js/simulador.js --platform=browser --jsx=automatic --loader:.tsx=tsx --minify --alias:framer=./framer-stub.js",
+    "dev": "esbuild js/bootstrap.tsx --bundle --outfile=js/simulador.js --platform=browser --jsx=automatic --loader:.tsx=tsx --alias:framer=./framer-stub.js --watch",
+    "serve": "concurrently --kill-others \"npm run dev\" \"browser-sync start --server --files \\\"**/*.html,css/*.css,js/simulador.js\\\" --no-notify --port 3000\""
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "framer-motion": "^13.0.0",
+    "lucide-react": "^1.28.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.28.1"
+  }
+}

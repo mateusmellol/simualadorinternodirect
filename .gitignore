@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output (gerado pelo npm run build)
+js/simulador.js
+
+# Claude Code local settings
+.claude/
+
+# Skills internas
+05 SKILLS/
+
+# Planos / docs internos
+implementation_plan.md
+
+# HTML legado (arquivo antigo de referência)
+DirectCon — Simulador de Consórcio.html
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.local
