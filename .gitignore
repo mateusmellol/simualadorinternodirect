@@ -2,6 +2,9 @@
 node_modules/
 
 # Build output (gerado pelo npm run build)
+public/
+
+# Build output (gerado pelo npm run build)
 js/simulador.js
 
 # Claude Code local settings
