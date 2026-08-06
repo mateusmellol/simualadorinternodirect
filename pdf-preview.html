@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Proposta Directcon — João Silva</title>
+<style>
+@font-face{font-family:'NeueHaasDisplay';font-weight:300;src:url('fonts/NeueHaasDisplayLight.ttf')}
+@font-face{font-family:'NeueHaasDisplay';font-weight:400;src:url('fonts/NeueHaasDisplayRoman.ttf')}
+@font-face{font-family:'NeueHaasDisplay';font-weight:500;src:url('fonts/NeueHaasDisplayMediu.ttf')}
+@font-face{font-family:'NeueHaasDisplay';font-weight:700;src:url('fonts/NeueHaasDisplayBold.ttf')}
+@font-face{font-family:'NeueHaasDisplay';font-weight:800;src:url('fonts/NeueHaasDisplayBlack.ttf')}
+
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{height:100%}
+body{
+  font-family:'NeueHaasDisplay','Inter',system-ui,sans-serif;
+  color:#111111;background:#fff;font-size:16px;line-height:1.5;
+  padding:11mm 14mm 9mm;display:flex;flex-direction:column;
+}
+
+/* ── HEADER ── */
+.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:2px solid #ffb715;margin-bottom:20px}
+.top-right{text-align:right}
+.top-right-t{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#020E1E}
+.top-right-s{font-size:13px;color:#6b7280;margin-top:3px}
+
+/* ── TITLE ── */
+.title-blk{margin-bottom:20px}
+h1{font-size:32px;font-weight:800;letter-spacing:-.03em;color:#020E1E;line-height:1.1}
+h1 em{color:#ffb715;font-style:normal}
+.subtitle{font-size:16px;color:#6b7280;margin-top:6px;display:flex;align-items:center;gap:8px}
+.subtitle b{color:#111111;font-weight:600}
+.subtitle .dot{width:4px;height:4px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0}
+
+/* ── COMPARISON TABLE ── */
+.comp-table{width:100%;border-collapse:collapse;margin-bottom:12px}
+
+/* Column headers */
+.comp-table thead th{
+  padding:12px 16px;text-align:left;
+  font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  border-bottom:2px solid #ffb715;
+}
+.comp-table thead th:first-child{
+  background:transparent;color:#6b7280;font-size:13px;letter-spacing:.09em;width:34%;
+}
+.comp-table thead th.col-admin{
+  background:#020E1E;color:#fff;
+}
+.col-header{display:flex;align-items:center;gap:8px}
+.col-dot{width:8px;height:8px;border-radius:50%;background:#ffb715;flex-shrink:0}
+
+/* Section header rows */
+.comp-table .sec-hd td{
+  background:#f3f4f6;color:#020E1E;
+  font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+  padding:9px 16px;border-top:2px solid #e5e7eb;
+}
+
+/* Data rows */
+.comp-table td{
+  padding:10px 16px;border-bottom:1px solid #e5e7eb;
+  color:#111111;vertical-align:middle;font-size:16px;
+}
+.comp-table td:first-child{color:#6b7280;font-size:13px;width:30%}
+.comp-table tr:last-child td{border-bottom:none}
+
+/* Value variants */
+.val-credit{font-size:22px;font-weight:800;letter-spacing:-.02em;color:#020E1E}
+.val-sub{font-size:13px;color:#6b7280;margin-top:2px}
+.val-gold{color:#ffb715;font-weight:800;font-size:18px}
+.val-gold-sm{color:#ffb715;font-weight:700}
+.val-bold{color:#020E1E;font-weight:700}
+.val-highlight{font-size:18px;font-weight:800;color:#020E1E}
+.val-muted{color:#6b7280}
+
+/* Row variants */
+.row-credit td{padding-top:12px;padding-bottom:12px}
+.row-total td{font-weight:700;background:#fff9e6}
+.row-total td:first-child{color:#6b7280;font-weight:400}
+
+/* ── STRATEGY BAR ── */
+.strategy-bar{
+  display:flex;gap:0;margin-bottom:12px;
+  background:#fff9e6;border:1px solid #ffb71533;border-radius:8px;
+  overflow:hidden;
+}
+.strat-item{
+  flex:1;padding:10px 14px;font-size:16px;color:#6b7280;
+  border-right:1px solid #ffb71533;
+}
+.strat-item:last-child{border-right:none}
+.strat-item span{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;color:#9ca3af}
+.strat-item b{color:#020E1E;font-weight:700}
+
+/* ── FOOTER ── */
+.spacer{flex:1;min-height:6px}
+.disc{
+  font-size:13px;color:#9ca3af;line-height:1.6;
+  border-left:2px solid #ffb715;padding-left:10px;margin-bottom:12px;
+}
+.ftr{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  border-top:1px solid #e5e7eb;padding-top:12px;
+}
+.ftr-consult{font-size:16px;font-weight:700;color:#020E1E}
+.ftr-contact{font-size:13px;color:#6b7280;margin-top:2px}
+.ftr-slogan{font-size:16px;font-weight:700;color:#ffb715;font-style:italic}
+
+/* ── TABLE WRAPPER ── */
+.table-wrap{overflow:visible;margin-bottom:12px}
+.table-wrap .comp-table{margin-bottom:0}
+
+/* ── MOBILE ── */
+@media (max-width:640px){
+  body{font-size:11px;padding:14px 12px 20px}
+
+  .top{margin-bottom:12px;padding-bottom:8px;flex-wrap:wrap;gap:8px}
+  .top svg{width:80px;height:18px}
+  .top-right-t{font-size:9px;letter-spacing:.06em}
+  .top-right-s{font-size:9px}
+
+  h1{font-size:17px;margin-bottom:2px}
+  .subtitle{font-size:10px;flex-wrap:wrap;gap:3px}
+  .title-blk{margin-bottom:10px}
+
+  /* Tabela fixa — sem overflow, proporcional */
+  .table-wrap{overflow:visible}
+  .comp-table{width:100%;table-layout:fixed;min-width:0}
+  .comp-table col.col-label{width:30%}
+  .comp-table col.col-data{width:23.33%}
+
+  .comp-table thead th{padding:6px 5px;font-size:8px;letter-spacing:.04em}
+  .comp-table thead th.col-admin{min-width:0}
+  .col-dot{width:6px;height:6px}
+
+  .comp-table .sec-hd td{font-size:8px;padding:5px 5px;letter-spacing:.05em}
+  .comp-table td{padding:5px 5px;font-size:10px;word-break:break-word}
+  .comp-table td:first-child{font-size:9px}
+
+  .val-credit{font-size:13px}
+  .val-gold{font-size:12px}
+  .val-highlight{font-size:12px}
+  .val-sub{font-size:8px}
+  .row-total td:not(:first-child){font-size:10px}
+
+  /* Strategy bar */
+  .strategy-bar{flex-wrap:wrap;gap:6px;padding:10px 10px}
+  .strat-item{flex:1 1 44%;padding:5px 8px}
+  .strat-item span{font-size:8px}
+  .strat-item{font-size:10px}
+
+  .disc{font-size:9px}
+  .ftr{flex-direction:column;gap:6px;align-items:flex-start}
+  .ftr-consult{font-size:12px}
+  .ftr-contact{font-size:9px}
+  .ftr-slogan{font-size:11px}
+  .spacer{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="top">
+  <svg width="120" height="27" viewBox="0 0 184 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_448_1529)">
+    <path d="M48.0859 12.2805V17.4678H54.1869C56.0337 17.4678 57.6795 17.1103 59.0776 16.3979C60.4705 15.6881 61.5608 14.6723 62.3251 13.3838C63.0867 12.0876 63.4727 10.5548 63.4727 8.82393C63.4727 7.09309 63.0867 5.54742 62.3251 4.23579C61.5634 2.92416 60.4705 1.90315 59.0776 1.20104C57.6795 0.49122 56.0337 0.131165 54.1869 0.131165H48.0859V6.43727H51.3751V2.80843H54.0617C55.9711 2.80843 57.4761 3.34594 58.5247 4.40811C59.5732 5.47027 60.1053 6.95421 60.1053 8.82393C60.1053 10.6936 59.5732 12.1699 58.5247 13.1986C57.4761 14.2325 55.9711 14.7571 54.0617 14.7571H51.3751V9.47203" fill="#020E1E"/>
+    <path d="M68.6524 3.76772H65.3633V17.4678H68.6524V3.76772Z" fill="#020E1E"/>
+    <path d="M74.4237 5.87148L74.1446 6.32669V3.77544H70.8555V17.4755H74.1446V10.6448C74.1446 9.30743 74.4524 8.35329 75.055 7.80292C75.6575 7.25769 76.5443 6.9825 77.7077 6.9825H78.5058V3.56712C77.6372 3.5877 76.8626 3.79602 76.1818 4.17407C75.4619 4.58042 74.8724 5.14622 74.4263 5.86376V5.87148H74.4237Z" fill="#020E1E"/>
+    <path d="M89.8647 4.37982C88.8213 3.82173 87.6267 3.53883 86.3094 3.53883C84.9922 3.53883 83.7141 3.82945 82.6629 4.40039C81.6144 4.97391 80.7953 5.80204 80.2059 6.86934C79.6242 7.93922 79.3242 9.20199 79.3242 10.6165C79.3242 12.031 79.6242 13.2655 80.2137 14.3353C80.8006 15.3975 81.6352 16.2334 82.6916 16.8197C83.748 17.3984 84.9583 17.6967 86.2938 17.6967C87.9449 17.6967 89.3508 17.2698 90.4855 16.4262C91.5627 15.6264 92.3113 14.5977 92.7313 13.3709H89.163C88.5683 14.4948 87.5823 15.0683 86.2234 15.0683C85.2661 15.0683 84.4471 14.7648 83.7898 14.1707C83.1324 13.5767 82.7542 12.7434 82.6629 11.6941L82.6499 11.5346H93.0677C93.1225 11.1694 93.146 10.7631 93.146 10.3207C93.146 8.98853 92.8513 7.79006 92.2774 6.76904C91.7036 5.74803 90.8845 4.94819 89.849 4.39011L89.8621 4.38239L89.8647 4.37982ZM89.5908 9.45917H82.6708L82.6995 9.28686C82.8403 8.31471 83.2316 7.53545 83.8602 6.9825C84.4888 6.42956 85.2817 6.14666 86.2051 6.14666C87.178 6.14666 88.0101 6.43728 88.6883 7.00308C89.3665 7.5766 89.7238 8.34814 89.7369 9.29972V9.45145H89.583L89.5908 9.45917Z" fill="#020E1E"/>
+    <path d="M106.048 4.81446C104.929 3.97347 103.487 3.54398 101.773 3.54398C100.437 3.54398 99.2401 3.83974 98.2124 4.42097C97.1847 4.99963 96.3656 5.83547 95.784 6.88992C95.2023 7.94437 94.9023 9.20713 94.9023 10.6216C94.9023 12.0361 95.1971 13.2912 95.784 14.3533C96.3656 15.4078 97.1821 16.2436 98.2124 16.8223C99.2401 17.401 100.445 17.6993 101.773 17.6993C103.473 17.6993 104.908 17.2569 106.035 16.3877C107.12 15.5595 107.869 14.4356 108.26 13.0417H104.692C104.209 14.3173 103.215 14.9603 101.739 14.9603C100.669 14.9603 99.8087 14.5745 99.1853 13.8004C98.5697 13.0417 98.2541 11.9718 98.2541 10.6139C98.2541 9.256 98.5697 8.15783 99.1853 7.39914C99.8087 6.63274 100.669 6.23925 101.739 6.23925C102.487 6.23925 103.124 6.42442 103.635 6.78447C104.118 7.1291 104.475 7.59974 104.692 8.18612H108.26C107.861 6.75104 107.12 5.61172 106.043 4.79903L106.051 4.81188L106.048 4.81446Z" fill="#020E1E"/>
+    <path d="M131.755 4.81446C130.636 3.97347 129.194 3.54398 127.472 3.54398C126.137 3.54398 124.939 3.83974 123.912 4.42097C122.884 5.0022 122.065 5.83547 121.483 6.88992C120.902 7.94437 120.602 9.20713 120.602 10.6216C120.602 12.0361 120.896 13.2912 121.483 14.3533C122.065 15.4078 122.881 16.2436 123.912 16.8223C124.942 17.401 126.144 17.6993 127.472 17.6993C129.173 17.6993 130.607 17.2569 131.739 16.3877C132.824 15.5595 133.573 14.4356 133.964 13.0417H130.396C129.913 14.3173 128.92 14.9603 127.443 14.9603C126.374 14.9603 125.513 14.5745 124.89 13.8004C124.274 13.0417 123.959 11.9718 123.959 10.6139C123.959 9.256 124.274 8.15783 124.89 7.39914C125.513 6.63274 126.374 6.23925 127.443 6.23925C128.192 6.23925 128.828 6.42442 129.34 6.78447C129.822 7.1291 130.18 7.59974 130.396 8.18612H133.964C133.565 6.75104 132.824 5.61172 131.747 4.79903L131.755 4.81188V4.81446Z" fill="#020E1E"/>
+    <path d="M115.061 3.76772V0.303474H111.751V3.76772H110.059V6.37555H111.751V13.2732C111.751 16.0945 113.186 17.4755 116.139 17.4755H118.244V14.7931H116.733C116.139 14.7931 115.727 14.6748 115.466 14.4356C115.205 14.1965 115.075 13.8158 115.075 13.304V6.37812H118.252V3.77029H115.061V3.76772Z" fill="#020E1E"/>
+    <path d="M149.703 6.90535C149.079 5.83547 148.213 5.0022 147.136 4.42097C146.051 3.84231 144.828 3.54398 143.489 3.54398C142.151 3.54398 140.928 3.83974 139.843 4.42097C138.766 4.99963 137.897 5.84319 137.276 6.90535C136.653 7.97523 136.332 9.22256 136.332 10.6242C136.332 12.0258 136.64 13.2732 137.248 14.3431C137.855 15.4129 138.703 16.2462 139.767 16.8274C140.831 17.4061 142.047 17.7044 143.385 17.7044C144.723 17.7044 145.973 17.4087 147.066 16.8274C148.156 16.2488 149.032 15.4052 149.676 14.3431C150.321 13.2732 150.642 12.0258 150.642 10.6242C150.642 9.22256 150.326 7.97523 149.697 6.90535H149.705H149.703ZM146.721 12.9697C146.364 13.6178 145.881 14.109 145.287 14.4331C144.692 14.7571 144.055 14.9217 143.382 14.9217C142.318 14.9217 141.424 14.5411 140.717 13.7978C140.018 13.0597 139.668 11.9898 139.668 10.6242C139.668 9.25857 140.031 8.18869 140.745 7.45057C141.465 6.70475 142.368 6.33183 143.432 6.33183C144.496 6.33183 145.404 6.71246 146.147 7.45057C146.883 8.1964 147.253 9.25857 147.253 10.6242C147.253 11.5346 147.071 12.3293 146.721 12.9697Z" fill="#020E1E"/>
+    <path d="M164.508 4.99448C163.464 3.94003 162.1 3.41538 160.407 3.41538C159.518 3.41538 158.699 3.58769 157.958 3.93232C157.217 4.27694 156.602 4.75273 156.124 5.35968V3.61341H152.535V17.617H156.124V9.88352C156.124 8.77249 156.411 7.91864 156.985 7.31684C157.559 6.7176 158.341 6.41927 159.33 6.41927C160.319 6.41927 161.072 6.71503 161.638 7.31684C162.204 7.91607 162.486 8.77249 162.486 9.88352V17.617H166.075V9.40001C166.075 7.51744 165.559 6.04121 164.508 4.99191V4.99448Z" fill="#020E1E"/>
+    <path d="M47.6334 27.3745C48.4238 26.0166 49.501 24.9518 50.8652 24.188C52.2294 23.4293 53.7631 23.0487 55.4559 23.0487C57.4357 23.0487 59.1781 23.5528 60.6675 24.5532C62.1569 25.5536 63.2002 26.9398 63.7949 28.7118H59.7024C59.2955 27.876 58.7216 27.2485 57.9887 26.8344C57.2557 26.4203 56.4002 26.2069 55.4351 26.2069C54.3995 26.2069 53.484 26.4486 52.678 26.9244C51.8746 27.4002 51.2434 28.0766 50.7948 28.9381C50.3461 29.8074 50.1218 30.8284 50.1218 31.9935C50.1218 33.1585 50.3461 34.1589 50.7948 35.0437C51.2434 35.9206 51.872 36.597 52.678 37.0728C53.4814 37.5486 54.3995 37.7904 55.4351 37.7904C56.4002 37.7904 57.2531 37.5769 57.9887 37.15C58.7242 36.7231 59.2981 36.0955 59.7024 35.2597H63.7949C63.2002 37.0471 62.1647 38.441 60.6805 39.4338C59.1963 40.4265 57.454 40.9228 55.4533 40.9228C53.7605 40.9228 52.2268 40.5422 50.8626 39.7835C49.4984 39.0248 48.4212 37.9704 47.6308 36.6099C46.8405 35.2571 46.4492 33.7192 46.4492 31.9935C46.4492 30.2678 46.8405 28.7298 47.6308 27.3719L47.6334 27.3745Z" fill="#020E1E"/>
+    <path d="M68.7973 40.1101C67.7122 39.5161 66.8593 38.6751 66.2437 37.5923C65.6281 36.5096 65.3125 35.2545 65.3125 33.8323C65.3125 32.4101 65.6281 31.1551 66.2646 30.0723C66.901 28.9896 67.7696 28.1486 68.8677 27.5545C69.9737 26.9604 71.197 26.6647 72.556 26.6647C73.9149 26.6647 75.1383 26.9604 76.2442 27.5545C77.3423 28.1486 78.2161 28.9896 78.8474 30.0723C79.4838 31.1628 79.7994 32.4101 79.7994 33.8323C79.7994 35.2545 79.4708 36.5096 78.8187 37.5923C78.1692 38.6828 77.2876 39.5161 76.1738 40.1101C75.06 40.7042 73.8236 41 72.4516 41C71.0796 41 69.8772 40.7042 68.7921 40.1101H68.7999H68.7973ZM74.2827 37.474C74.8487 37.1628 75.3052 36.7025 75.6391 36.0801C75.9755 35.4603 76.1503 34.7067 76.1503 33.8246C76.1503 32.5078 75.8008 31.4868 75.0939 30.7744C74.387 30.0646 73.5263 29.7123 72.5116 29.7123C71.497 29.7123 70.644 30.0646 69.958 30.7744C69.272 31.4843 68.9303 32.5001 68.9303 33.8246C68.9303 35.1491 69.2668 36.1624 69.9372 36.8748C70.6101 37.5846 71.4474 37.937 72.4699 37.937C73.1142 37.937 73.7219 37.7852 74.2879 37.474H74.2801H74.2827Z" fill="#020E1E"/>
+    <path d="M93.6637 28.2489C94.6992 29.2905 95.2157 30.7539 95.2157 32.6236V40.7711H91.6553V33.0994C91.6553 31.996 91.3762 31.1473 90.8154 30.5533C90.2546 29.9592 89.4929 29.6634 88.5278 29.6634C87.5627 29.6634 86.7724 29.9592 86.1985 30.5533C85.6325 31.1473 85.3456 31.996 85.3456 33.0994V40.7711H81.7852V26.8833H85.3456V28.6141C85.8203 28.0149 86.4229 27.5391 87.1636 27.1996C87.8992 26.855 88.7104 26.6827 89.592 26.6827C91.2718 26.6827 92.6282 27.2073 93.6559 28.2489H93.6637Z" fill="#020E1E"/>
+    <path d="M100.248 40.3853C99.3329 39.979 98.6104 39.4183 98.073 38.7162C97.5409 38.0115 97.2462 37.24 97.1992 36.3836H100.781C100.851 36.9211 101.117 37.3634 101.579 37.7158C102.048 38.0681 102.627 38.2404 103.321 38.2404C104.015 38.2404 104.531 38.1093 104.91 37.8392C105.288 37.5692 105.483 37.2323 105.483 36.8105C105.483 36.363 105.251 36.0184 104.784 35.7972C104.315 35.5683 103.574 35.3291 102.559 35.0591C101.511 34.8096 100.65 34.5499 99.9771 34.2798C99.3042 34.0098 98.7329 33.6034 98.2478 33.0531C97.7652 32.5001 97.5201 31.7569 97.5201 30.8259C97.5201 30.0595 97.7444 29.3574 98.193 28.7221C98.6416 28.0869 99.2833 27.5828 100.123 27.2176C100.963 26.8524 101.949 26.6647 103.084 26.6647C104.764 26.6647 106.099 27.0787 107.101 27.9068C108.102 28.735 108.653 29.8511 108.752 31.2528H105.345C105.296 30.6998 105.058 30.2601 104.646 29.936C104.234 29.612 103.673 29.4474 102.982 29.4474C102.338 29.4474 101.842 29.5657 101.493 29.7997C101.143 30.0337 100.968 30.3578 100.968 30.7796C100.968 31.2476 101.206 31.6 101.683 31.8417C102.158 32.0835 102.893 32.3304 103.895 32.5799C104.91 32.8293 105.749 33.0891 106.415 33.3591C107.072 33.6292 107.646 34.0432 108.128 34.6013C108.611 35.1594 108.864 35.8975 108.877 36.8234C108.877 37.6232 108.653 38.3407 108.204 38.976C107.755 39.6112 107.114 40.1076 106.274 40.4651C105.434 40.8225 104.456 41.0026 103.334 41.0026C102.213 41.0026 101.151 40.7968 100.235 40.3879H100.256L100.248 40.3853Z" fill="#020E1E"/>
+    <path d="M113.778 40.1102C112.693 39.5161 111.84 38.6751 111.224 37.5923C110.609 36.5096 110.293 35.2545 110.293 33.8323C110.293 32.4101 110.614 31.1551 111.245 30.0723C111.881 28.9896 112.75 28.1486 113.848 27.5545C114.946 26.9604 116.177 26.6647 117.536 26.6647C118.895 26.6647 120.119 26.9604 121.225 27.5545C122.323 28.1486 123.197 28.9896 123.828 30.0723C124.464 31.1628 124.78 32.4101 124.78 33.8323C124.78 35.2545 124.451 36.5096 123.799 37.5923C123.15 38.6828 122.268 39.5161 121.154 40.1102C120.04 40.7042 118.804 41 117.432 41C116.06 41 114.858 40.7042 113.773 40.1102H113.78H113.778ZM119.258 37.474C119.824 37.1628 120.28 36.7025 120.614 36.0801C120.951 35.4603 121.126 34.7068 121.126 33.8246C121.126 32.5078 120.776 31.4868 120.069 30.7744C119.362 30.062 118.509 29.7123 117.487 29.7123C116.464 29.7123 115.619 30.0646 114.933 30.7744C114.247 31.4843 113.906 32.5001 113.906 33.8246C113.906 35.1491 114.242 36.1624 114.912 36.8748C115.585 37.5846 116.423 37.937 117.445 37.937C118.089 37.937 118.697 37.7852 119.263 37.474H119.255H119.258ZM120.46 23.0975L114.612 25.7337V23.2287L120.46 20.248V23.1053V23.0975Z" fill="#020E1E"/>
+    <path d="M132.127 27.3128C132.863 26.891 133.708 26.6852 134.66 26.6852V30.3681H133.723C132.604 30.3681 131.765 30.6304 131.191 31.1473C130.617 31.6643 130.338 32.5696 130.338 33.8529V40.7711H126.777V26.8833H130.338V29.0359C130.792 28.2978 131.394 27.7242 132.13 27.305V27.3128H132.127Z" fill="#020E1E"/>
+    <path d="M136.378 30.0517C136.972 28.9767 137.791 28.1409 138.848 27.5468C139.896 26.9527 141.101 26.6569 142.458 26.6569C144.2 26.6569 145.648 27.0839 146.796 27.948C147.943 28.8096 148.705 30.0183 149.099 31.5691H145.257C145.053 30.9699 144.711 30.4941 144.229 30.1546C143.746 29.81 143.152 29.6377 142.437 29.6377C141.422 29.6377 140.619 30.0029 140.024 30.7281C139.43 31.4534 139.135 32.4873 139.135 33.8246C139.135 35.162 139.43 36.1701 140.024 36.8954C140.619 37.6206 141.422 37.9858 142.437 37.9858C143.879 37.9858 144.816 37.3506 145.257 36.0827H149.099C148.708 37.5872 147.938 38.7805 146.783 39.6704C145.627 40.5602 144.187 41.0026 142.458 41.0026C141.101 41.0026 139.896 40.7068 138.848 40.1127C137.799 39.5186 136.972 38.6854 136.378 37.6078C135.783 36.5327 135.488 35.27 135.488 33.8349C135.488 32.3998 135.783 31.1371 136.378 30.062V30.0543V30.0517Z" fill="#020E1E"/>
+    <path d="M151.315 24.6432C150.903 24.2497 150.691 23.7611 150.691 23.1747C150.691 22.5883 150.9 22.0997 151.315 21.7062C151.727 21.3127 152.251 21.1198 152.882 21.1198C153.514 21.1198 154.03 21.3204 154.442 21.7062C154.854 22.092 155.066 22.5883 155.066 23.1747C155.066 23.7611 154.857 24.2497 154.442 24.6432C154.028 25.0367 153.506 25.2296 152.882 25.2296C152.259 25.2296 151.735 25.0367 151.315 24.6432ZM154.633 26.8833V40.7711H151.072V26.8833H154.633Z" fill="#020E1E"/>
+    <path d="M160.106 40.1101C159.021 39.5161 158.168 38.6751 157.552 37.5923C156.937 36.5096 156.621 35.2545 156.621 33.8323C156.621 32.4101 156.937 31.1551 157.573 30.0723C158.21 28.9896 159.078 28.1486 160.176 27.5545C161.282 26.9604 162.506 26.6647 163.865 26.6647C165.224 26.6647 166.447 26.9604 167.553 27.5545C168.651 28.1486 169.525 28.9896 170.156 30.0723C170.792 31.1628 171.108 32.4101 171.108 33.8323C171.108 35.2545 170.779 36.5096 170.127 37.5923C169.478 38.6828 168.596 39.5161 167.482 40.1101C166.369 40.7042 165.132 41 163.76 41C162.388 41 161.186 40.7042 160.101 40.1101H160.108H160.106ZM165.583 37.474C166.149 37.1628 166.606 36.7025 166.94 36.0801C167.274 35.4577 167.451 34.7067 167.451 33.8246C167.451 32.5078 167.102 31.4868 166.395 30.7744C165.688 30.0646 164.827 29.7123 163.812 29.7123C162.798 29.7123 161.945 30.0646 161.259 30.7744C160.573 31.4843 160.231 32.5001 160.231 33.8246C160.231 35.1491 160.568 36.1624 161.238 36.8748C161.908 37.5872 162.748 37.937 163.771 37.937C164.415 37.937 165.023 37.7852 165.589 37.474H165.581H165.583Z" fill="#020E1E"/>
+    <path d="M175.377 40.3853C174.462 39.979 173.739 39.4183 173.202 38.7162C172.67 38.0115 172.375 37.24 172.328 36.3836H175.909C175.98 36.9211 176.246 37.3634 176.708 37.7158C177.177 38.0681 177.756 38.2404 178.45 38.2404C179.144 38.2404 179.66 38.1093 180.038 37.8392C180.417 37.5692 180.612 37.2323 180.612 36.8105C180.612 36.363 180.38 36.0184 179.913 35.7972C179.444 35.5683 178.703 35.3291 177.688 35.0591C176.64 34.8096 175.779 34.5499 175.106 34.2798C174.433 34.0098 173.862 33.6034 173.377 33.0531C172.894 32.5001 172.649 31.7569 172.649 30.8259C172.649 30.0595 172.873 29.3574 173.322 28.7221C173.771 28.0869 174.412 27.5828 175.252 27.2176C176.092 26.8524 177.078 26.6647 178.213 26.6647C179.892 26.6647 181.228 27.0787 182.23 27.9068C183.231 28.735 183.781 29.8511 183.881 31.2528H180.474C180.425 30.6998 180.187 30.2601 179.775 29.936C179.363 29.612 178.802 29.4474 178.111 29.4474C177.467 29.4474 176.971 29.5657 176.622 29.7997C176.272 30.0337 176.097 30.3578 176.097 30.7796C176.097 31.2476 176.335 31.6 176.812 31.8417C177.287 32.0835 178.022 32.3304 179.024 32.5799C180.038 32.8293 180.878 33.0891 181.544 33.3591C182.201 33.6292 182.775 34.0432 183.257 34.6013C183.74 35.1594 183.993 35.8975 184.006 36.8234C184.006 37.6232 183.782 38.3407 183.333 38.976C182.884 39.6112 182.243 40.1076 181.403 40.4651C180.563 40.8225 179.585 41.0026 178.463 41.0026C177.341 41.0026 176.28 40.7968 175.364 40.3879H175.385L175.377 40.3853Z" fill="#020E1E"/>
+    <path d="M37.7954 20.4614C37.7954 24.5378 36.8433 28.1537 34.9757 31.1962C33.1133 34.231 30.4267 36.6176 27.0071 38.2893C23.8719 39.8195 20.2201 40.6554 16.1485 40.7943C16.2319 36.9314 17.6378 25.6385 30.5623 16.9046C30.5623 16.9046 20.5149 4.36181 0 8.55131V0H14.9929C19.5263 0 23.5719 0.848702 27.0071 2.51781C30.4293 4.17921 33.1081 6.58901 34.9757 9.66491C36.8433 12.7485 37.7954 16.3851 37.7954 20.4614Z" fill="#FFB715"/>
+    </g>
+    <defs><clipPath id="clip0_448_1529"><rect width="184" height="41" fill="white"/></clipPath></defs>
+  </svg>
+  <div class="top-right">
+    <div class="top-right-t">Proposta de Consórcio</div>
+    <div class="top-right-s">06 de agosto de 2026 &nbsp;·&nbsp; Validade: 30 dias</div>
+  </div>
+</div>
+
+<!-- TITLE -->
+<div class="title-blk">
+  <h1>Consórcio de <em>Imóvel</em></h1>
+  <div class="subtitle">
+    Preparada para <b>João Silva</b>
+    <span class="dot"></span>
+    Consultor responsável: <b>Bruno Vieira</b>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="table-wrap">
+<table class="comp-table">
+  <colgroup>
+    <col class="col-label">
+    <col class="col-data">
+    <col class="col-data">
+    <col class="col-data">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Comparativo de Condições</th>
+      <th class="col-admin"><div class="col-header"><span class="col-dot"></span>Mycon</div></th>
+      <th class="col-admin"><div class="col-header"><span class="col-dot"></span>CNP</div></th>
+      <th class="col-admin"><div class="col-header"><span class="col-dot"></span>Itaú</div></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- CRÉDITO CONTRATADO -->
+    <tr class="sec-hd"><td colspan="4">Crédito Contratado</td></tr>
+    <tr class="row-credit">
+      <td>Crédito</td>
+      <td><div class="val-credit">R$ 300.000</div></td>
+      <td><div class="val-credit">R$ 300.000</div></td>
+      <td><div class="val-credit">R$ 300.000</div></td>
+    </tr>
+    <tr>
+      <td>Consórcio / Prazo</td>
+      <td class="val-muted">Imóvel &nbsp;·&nbsp; 180 meses</td>
+      <td class="val-muted">Imóvel &nbsp;·&nbsp; 180 meses</td>
+      <td class="val-muted">Imóvel &nbsp;·&nbsp; 180 meses</td>
+    </tr>
+
+    <!-- PARCELA PRÉ-CONTEMPLAÇÃO -->
+    <tr class="sec-hd"><td colspan="4">Parcela Pré-Contemplação</td></tr>
+    <tr>
+      <td>Com 50% de redução na parcela</td>
+      <td><div class="val-gold">R$ 1.008,33/mês</div><div class="val-sub">Parcela cheia: R$ 2.016,67/mês</div></td>
+      <td><div class="val-gold">R$ 1.016,67/mês</div><div class="val-sub">Parcela cheia: R$ 2.033,33/mês</div></td>
+      <td><div class="val-gold">R$ 1.029,17/mês</div><div class="val-sub">Parcela cheia: R$ 2.058,33/mês</div></td>
+    </tr>
+
+    <!-- LANCE -->
+    <tr class="sec-hd"><td colspan="4">Detalhamento do Lance Sorteado/Sugerido</td></tr>
+    <tr>
+      <td>Lance embutido (do próprio crédito)</td>
+      <td class="val-muted">~ R$ 60.000</td>
+      <td class="val-muted">~ R$ 60.000</td>
+      <td class="val-muted">~ R$ 60.000</td>
+    </tr>
+    <tr>
+      <td>Lance livre (recursos próprios)</td>
+      <td class="val-muted">~ R$ 30.000</td>
+      <td class="val-muted">~ R$ 30.000</td>
+      <td class="val-muted">~ R$ 30.000</td>
+    </tr>
+    <tr class="row-total">
+      <td>Total do lance ofertado</td>
+      <td class="val-gold-sm">R$ 90.000 (30%)</td>
+      <td class="val-gold-sm">R$ 90.000 (30%)</td>
+      <td class="val-gold-sm">R$ 90.000 (30%)</td>
+    </tr>
+    <tr>
+      <td>Crédito líquido recebido em mãos</td>
+      <td class="val-bold">R$ 240.000</td>
+      <td class="val-bold">R$ 240.000</td>
+      <td class="val-bold">R$ 240.000</td>
+    </tr>
+
+    <!-- PÓS-CONTEMPLAÇÃO -->
+    <tr class="sec-hd"><td colspan="4">Projeção Pós-Contemplação</td></tr>
+    <tr>
+      <td>Estimativa de nova parcela após abatimento do lance</td>
+      <td><div class="val-highlight">R$ 1.661,91/mês</div></td>
+      <td><div class="val-highlight">R$ 1.680,95/mês</div></td>
+      <td><div class="val-highlight">R$ 1.709,52/mês</div></td>
+    </tr>
+    <tr>
+      <td>Saldo devedor estimado pós-lance</td>
+      <td class="val-bold">R$ 232.667</td>
+      <td class="val-bold">R$ 235.333</td>
+      <td class="val-bold">R$ 239.333</td>
+    </tr>
+    <tr>
+      <td>Prazo restante sugerido</td>
+      <td class="val-muted">140 meses</td>
+      <td class="val-muted">140 meses</td>
+      <td class="val-muted">140 meses</td>
+    </tr>
+
+    <!-- TAXAS -->
+    <tr class="sec-hd"><td colspan="4">Taxas Administrativas &amp; Custos Totais</td></tr>
+    <tr>
+      <td>Taxa de administração (total do período)</td>
+      <td class="val-muted">19%</td>
+      <td class="val-muted">20%</td>
+      <td class="val-muted">21,5%</td>
+    </tr>
+    <tr>
+      <td>Fundo de reserva</td>
+      <td class="val-muted">2%</td>
+      <td class="val-muted">2%</td>
+      <td class="val-muted">2%</td>
+    </tr>
+    <tr class="row-total">
+      <td>Custo total projetado a pagar (estimado)</td>
+      <td class="val-bold">R$ 303.000</td>
+      <td class="val-bold">R$ 306.000</td>
+      <td class="val-bold">R$ 310.500</td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<!-- STRATEGY BAR -->
+<div class="strategy-bar">
+  <div class="strat-item">
+    <span>Estratégia de contemplação</span>
+    <b>Lance Embutido</b>
+  </div>
+  <div class="strat-item">
+    <span>Base de cálculo do lance</span>
+    <b>Sobre o Crédito</b>
+  </div>
+  <div class="strat-item">
+    <span>Redutor pré-contemplação</span>
+    <b>50%</b>
+  </div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- DISCLAIMER -->
+<p class="disc">Projeção estimada, sem correção de índice. Créditos e parcelas são reajustados conforme o índice do grupo (INCC, IPCA ou IGP-M). A contemplação ocorre por sorteio ou lance, sem data garantida. Seguro prestamista obrigatório após a contemplação. Esta proposta é uma simulação e não representa oferta vinculante.</p>
+
+<!-- FOOTER -->
+<div class="ftr">
+  <div>
+    <div class="ftr-consult">Bruno Vieira</div>
+    <div class="ftr-contact">(41) 99999-0000 &nbsp;·&nbsp; bruno@directcon.com.br</div>
+  </div>
+  <div class="ftr-slogan">Dê asas ao seu sonho.</div>
+</div>
+
+</body>
+</html>
