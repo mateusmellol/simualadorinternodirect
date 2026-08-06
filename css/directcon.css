@@ -414,6 +414,7 @@ input[type=number] { -moz-appearance: textfield; }
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
   cursor: pointer;
   transition: transform var(--dur);
+  margin-top: -8px;
 }
 
 .credit-slider::-moz-range-thumb {
