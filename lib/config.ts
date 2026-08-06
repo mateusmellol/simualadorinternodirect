@@ -101,7 +101,7 @@ export const CREDITO_RANGES: Record<TipoBem, { min: number; max: number; step: n
 export const DEFAULT_CONFIG: Config = {
   senha: 'DirectCon2025',
   contato: '(11) 9999-0000\ncontato@directcon.com.br\nwww.directcon.com.br',
-  consultores: ['Victor Tessaro','Luan Geffer','Luis Fellipe','Gabriel Lopes','Pablo Camparim','Shaquille Oniel','Bruno Vieira'],
+  consultores: ['Victor Tessaro','Luan Geffer','Luis Fellipe','Gabriel Lopes','Pablo Camparim','Bruno Vieira'],
   taxas: {
     imovel: [
       { label: '200–240 meses', prazoMin: 200, prazoMax: 240, admin: 22,   fundo: 2   },

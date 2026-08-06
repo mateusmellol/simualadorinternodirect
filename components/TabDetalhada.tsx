@@ -235,7 +235,7 @@ export default function TabDetalhada({
               <PillGroup value={tipoBem} onChange={handleTipoBemChange} />
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-outline" onClick={onBack}>Voltar</button>
             <button className="btn btn-gold" onClick={nextStep}>Continuar</button>
@@ -259,7 +259,7 @@ export default function TabDetalhada({
               />
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-outline" onClick={onBack}>Voltar</button>
             <button className="btn btn-gold" onClick={nextStep} disabled={selectedIds.length === 0}>Continuar</button>
@@ -318,7 +318,7 @@ export default function TabDetalhada({
               )}
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-outline" onClick={onBack}>Voltar</button>
             <button className="btn btn-gold" onClick={nextStep} disabled={!allAdminsValid}>
@@ -369,7 +369,7 @@ export default function TabDetalhada({
               />
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-outline" onClick={onBack}>Voltar</button>
             <button className="btn btn-gold" onClick={nextStep}>Continuar</button>
@@ -422,7 +422,7 @@ export default function TabDetalhada({
               )}
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-outline" onClick={onBack}>Voltar</button>
             <button className="btn btn-gold" onClick={nextStep}>Ver simulação</button>
@@ -520,7 +520,7 @@ export default function TabDetalhada({
                       </svg>
                       Gerar Proposta PDF
                     </button>
-                    <button className="btn btn-outline btn-sm" onClick={limpar}>Limpar simulação</button>
+                    <button className="btn btn-outline cta-btn" onClick={limpar}>Limpar simulação</button>
                   </div>
                 </>
               ) : (
@@ -532,7 +532,6 @@ export default function TabDetalhada({
               )}
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-outline" onClick={onBack}>Voltar</button>
           </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { type Estrategia, type LanceBase } from '../lib/config';
 import { brl } from '../lib/calc';
 
@@ -16,10 +17,13 @@ interface LanceInputsProps {
   lfRPPct: number; onLfRPPctChange: (v: number) => void;
 }
 
-function hint(credito: number, pctVal: number): string {
-  if (credito <= 0) return '';
-  return `= ${brl(credito * pctVal / 100)} sobre o crédito`;
-}
+const EASE = [0.4, 0, 0.2, 1] as const;
+const motionProps = {
+  initial: { opacity: 0, height: 0, overflow: 'hidden' as const },
+  animate: { opacity: 1, height: 'auto', overflow: 'visible' as const },
+  exit:    { opacity: 0, height: 0, overflow: 'hidden' as const },
+  transition: { duration: 0.22, ease: EASE },
+};
 
 export default function LanceInputs(props: LanceInputsProps) {
   const { estrategia, lanceBase, onLanceBaseChange, credito, totalBruto } = props;
@@ -31,83 +35,95 @@ export default function LanceInputs(props: LanceInputsProps) {
 
   return (
     <>
-      {showLivre && (
-        <div className="fg">
-          <label>% Lance Livre (recursos próprios)</label>
-          <div className="input-wrap">
-            <input
-              type="number" min={0} max={100} step={1}
-              value={props.llPct}
-              onChange={e => props.onLlPctChange(parseInt(e.target.value) || 0)}
-              placeholder="20"
-            />
-            <span className="input-suffix">%</span>
-          </div>
-          {credito > 0 && <div className="field-hint">= {brl(credito * props.llPct / 100)} sobre o crédito</div>}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {showLivre && (
+          <motion.div key="lance-livre" {...motionProps}>
+            <div className="fg">
+              <label>% Lance Livre (recursos próprios)</label>
+              <div className="input-wrap">
+                <input
+                  type="number" min={0} max={100} step={1}
+                  value={props.llPct}
+                  onChange={e => props.onLlPctChange(parseInt(e.target.value) || 0)}
+                  placeholder="20"
+                />
+                <span className="input-suffix">%</span>
+              </div>
+              {credito > 0 && <div className="field-hint">= {brl(credito * props.llPct / 100)} sobre o crédito</div>}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {showEmbutido && (
-        <div className="fg-row">
-          <div className="fg">
-            <label>% Lance Embutido</label>
-            <div className="input-wrap">
-              <input
-                type="number" min={0} max={50} step={1}
-                value={props.lePct}
-                onChange={e => props.onLePctChange(parseInt(e.target.value) || 0)}
-                placeholder="25"
-              />
-              <span className="input-suffix">%</span>
+      <AnimatePresence initial={false}>
+        {showEmbutido && (
+          <motion.div key="lance-embutido" {...motionProps}>
+            <div className="fg-row">
+              <div className="fg">
+                <label>% Lance Embutido</label>
+                <div className="input-wrap">
+                  <input
+                    type="number" min={0} max={50} step={1}
+                    value={props.lePct}
+                    onChange={e => props.onLePctChange(parseInt(e.target.value) || 0)}
+                    placeholder="25"
+                  />
+                  <span className="input-suffix">%</span>
+                </div>
+                {credito > 0 && <div className="field-hint">= {brl(credito * props.lePct / 100)}</div>}
+              </div>
+              <div className="fg">
+                <label>% Lance Livre</label>
+                <div className="input-wrap">
+                  <input
+                    type="number" min={0} max={100} step={1}
+                    value={props.leLLPct}
+                    onChange={e => props.onLeLLPctChange(parseInt(e.target.value) || 0)}
+                    placeholder="10"
+                  />
+                  <span className="input-suffix">%</span>
+                </div>
+                {credito > 0 && <div className="field-hint">= {brl(credito * props.leLLPct / 100)}</div>}
+              </div>
             </div>
-            {credito > 0 && <div className="field-hint">= {brl(credito * props.lePct / 100)}</div>}
-          </div>
-          <div className="fg">
-            <label>% Lance Livre</label>
-            <div className="input-wrap">
-              <input
-                type="number" min={0} max={100} step={1}
-                value={props.leLLPct}
-                onChange={e => props.onLeLLPctChange(parseInt(e.target.value) || 0)}
-                placeholder="10"
-              />
-              <span className="input-suffix">%</span>
-            </div>
-            {credito > 0 && <div className="field-hint">= {brl(credito * props.leLLPct / 100)}</div>}
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {showFixo && (
-        <div className="fg-row">
-          <div className="fg">
-            <label>% Lance Embutido</label>
-            <div className="input-wrap">
-              <input
-                type="number" min={0} max={50} step={1}
-                value={props.lfEmbPct}
-                onChange={e => props.onLfEmbPctChange(parseInt(e.target.value) || 0)}
-                placeholder="25"
-              />
-              <span className="input-suffix">%</span>
+      <AnimatePresence initial={false}>
+        {showFixo && (
+          <motion.div key="lance-fixo" {...motionProps}>
+            <div className="fg-row">
+              <div className="fg">
+                <label>% Lance Embutido</label>
+                <div className="input-wrap">
+                  <input
+                    type="number" min={0} max={50} step={1}
+                    value={props.lfEmbPct}
+                    onChange={e => props.onLfEmbPctChange(parseInt(e.target.value) || 0)}
+                    placeholder="25"
+                  />
+                  <span className="input-suffix">%</span>
+                </div>
+                {credito > 0 && <div className="field-hint">= {brl(credito * props.lfEmbPct / 100)}</div>}
+              </div>
+              <div className="fg">
+                <label>% Recursos Próprios</label>
+                <div className="input-wrap">
+                  <input
+                    type="number" min={0} max={100} step={1}
+                    value={props.lfRPPct}
+                    onChange={e => props.onLfRPPctChange(parseInt(e.target.value) || 0)}
+                    placeholder="0"
+                  />
+                  <span className="input-suffix">%</span>
+                </div>
+                {credito > 0 && <div className="field-hint">= {brl(credito * props.lfRPPct / 100)}</div>}
+              </div>
             </div>
-            {credito > 0 && <div className="field-hint">= {brl(credito * props.lfEmbPct / 100)}</div>}
-          </div>
-          <div className="fg">
-            <label>% Recursos Próprios</label>
-            <div className="input-wrap">
-              <input
-                type="number" min={0} max={100} step={1}
-                value={props.lfRPPct}
-                onChange={e => props.onLfRPPctChange(parseInt(e.target.value) || 0)}
-                placeholder="0"
-              />
-              <span className="input-suffix">%</span>
-            </div>
-            {credito > 0 && <div className="field-hint">= {brl(credito * props.lfRPPct / 100)}</div>}
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {showBase && (
         <div className="fg">

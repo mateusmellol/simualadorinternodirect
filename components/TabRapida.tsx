@@ -220,7 +220,7 @@ export default function TabRapida({
               <PillGroup value={tipoBem} onChange={handleTipoBemChange} />
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-gold btn-full" onClick={nextStep}>Continuar</button>
           </div>
@@ -275,7 +275,7 @@ export default function TabRapida({
               </div>
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-gold btn-full" onClick={nextStep}>Continuar</button>
           </div>
@@ -324,7 +324,7 @@ export default function TabRapida({
               </div>
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-gold btn-full" onClick={nextStep}>Continuar</button>
           </div>
@@ -372,7 +372,7 @@ export default function TabRapida({
               />
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-gold btn-full" onClick={nextStep}>Continuar</button>
           </div>
@@ -430,7 +430,7 @@ export default function TabRapida({
               )}
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
+          <ProgressBar total={totalSteps - 1} current={currentStep} />
           <div className="step-footer">
             <button className="btn btn-gold btn-full" onClick={nextStep}>Ver simulação</button>
           </div>
@@ -520,7 +520,7 @@ export default function TabRapida({
                       <Download size={15} />
                       Gerar Proposta PDF
                     </button>
-                    <button className="btn btn-outline btn-sm" onClick={limpar}>Limpar simulação</button>
+                    <button className="btn btn-outline cta-btn" onClick={limpar}>Limpar simulação</button>
                   </div>
                 </>
               ) : (
@@ -532,7 +532,6 @@ export default function TabRapida({
               )}
             </div>
           </div>
-          <ProgressBar total={totalSteps} current={currentStep} />
         </>
       )}
     </>

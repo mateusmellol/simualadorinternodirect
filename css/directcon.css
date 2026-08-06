@@ -415,6 +415,30 @@ input[type=number] { -moz-appearance: textfield; }
 
 .credit-slider:active::-webkit-slider-thumb { transform: scale(1.15); }
 
+.credit-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    var(--c-primary) 0%,
+    var(--c-primary) var(--slider-pct, 0%),
+    var(--c-border) var(--slider-pct, 0%),
+    var(--c-border) 100%
+  );
+}
+
+.credit-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--c-border);
+}
+
+.credit-slider::-moz-range-progress {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--c-primary);
+}
+
 .slider-labels {
   display: flex;
   justify-content: space-between;

@@ -16,7 +16,7 @@ const EASE = [0.4, 0, 0.2, 1] as const;
 const ESTRATEGIAS: Estrategia[] = ['sorteio', 'lance_livre', 'lance_livre_embutido', 'lance_fixo'];
 
 export default function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
-  const [locked, setLocked]     = useState(false);
+  const [locked, setLocked]     = useState(true);
   const [pw, setPw]             = useState('');
   const [pwError, setPwError]   = useState(false);
   const [draft, setDraft]       = useState<Config>(() => JSON.parse(JSON.stringify(config)));
