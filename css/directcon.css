@@ -373,6 +373,19 @@ input[type=number] { -moz-appearance: textfield; }
 }
 
 /* ── Slider ──────────────────────────────────────────────────────── */
+/* Reset do estilo de input aplicado por .fg input */
+.fg input[type=range] {
+  height: auto;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.fg input[type=range]:focus { border-color: transparent; box-shadow: none; }
+
 .credit-slider {
   -webkit-appearance: none;
   appearance: none;
