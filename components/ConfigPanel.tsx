@@ -104,7 +104,7 @@ export default function ConfigPanel({ config, onSave, onClose }: ConfigPanelProp
                 />
                 {pwError && <span className="field-err">Senha incorreta.</span>}
               </div>
-              <button className="btn btn-gold btn-full" style={{ height: 'var(--h-btn)', fontSize: 15, fontWeight: 600 }} onClick={handleCheckPW}>Acessar</button>
+              <button className="btn btn-gold btn-full" style={{ alignSelf: 'stretch' }} onClick={handleCheckPW}>Acessar</button>
             </div>
           ) : (
 
